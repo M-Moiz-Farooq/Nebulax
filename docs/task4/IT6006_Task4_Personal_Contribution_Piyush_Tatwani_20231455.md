@@ -86,31 +86,18 @@ This snippet also documents an important separation: **storage** remains numeric
 
 ---
 
-## 5. Evidence of contribution (Task 4 requirement)
+## 5. Evidence of contribution
 
-**Pull request evidence**
+**GitHub — NEBULAX repository**  
+The project repository is **https://github.com/M-Moiz-Farooq/Nebulax**. Documentation alignment, supporting frontend changes, and related contributions appear in **commits**, **pull requests**, **issues**, and **reviews** on that repository.
 
-- [ ] Insert: screenshot or link of a merged PR (recommended: project hub content update, `money.js`/utils, or documentation-related frontend edits).  
-
-**Team discussion evidence**
-
-- [ ] Insert: Teams screenshot showing documentation review, demo readiness discussion, or SDD/PRD alignment thread.  
+**Team communication**  
+Per **IT6006_Team_Contract_NEBULAX.md**, the team used **Microsoft Teams** for coordination; documentation and delivery decisions are also reflected in **repository history** and shared project files.
 
 ---
 
-## 6. Mapping to the rubric (self-check)
+## 6. Declaration alignment
 
-| Theme | How this summary demonstrates it |
-|-------|-----------------------------------|
-| **Task 2 — Requirements + privacy policies** | Emphasises traceability + security/privacy narrative alignment. |
-| **Task 3 — URL/system coherence** | Connects URL planning and documentation to delivered routes and demo narrative. |
-| **Task 4 — Reflection** | Clear responsibilities from contract + delivery assurance + one implementation snippet. |
+This summary aligns with the NEBULAX **team contract** responsibilities for Piyush Tatwani and with the **updated progress report** (§4.3).
 
----
-
-## 7. Declaration alignment
-
-This summary aligns with the NEBULAX **team contract** responsibilities for Piyush Tatwani and with the **updated progress report** (§4.3). Evidence attachments are genuine GitHub/Teams outputs.
-
-**Student:** Piyush Tatwani (20231455)  
-**Date:** _______________
+**Student:** Piyush Tatwani (20231455)
