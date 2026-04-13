@@ -1,3 +1,4 @@
+/** Ledger amount formatting for the UI (values remain plain numbers in API payloads). */
 const usd = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
