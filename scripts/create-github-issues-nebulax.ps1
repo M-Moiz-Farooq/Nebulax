@@ -8,6 +8,17 @@
 $ErrorActionPreference = "Stop"
 $Repo = "M-Moiz-Farooq/Nebulax"
 
+# gh is often installed but not on PATH — resolve it
+$GhExe = $null
+if (Get-Command gh -ErrorAction SilentlyContinue) {
+  $GhExe = (Get-Command gh).Source
+} elseif (Test-Path "$env:ProgramFiles\GitHub CLI\gh.exe") {
+  $GhExe = "$env:ProgramFiles\GitHub CLI\gh.exe"
+}
+if (-not $GhExe) {
+  throw "GitHub CLI (gh) not found. Install: winget install --id GitHub.cli -e"
+}
+
 $Muskan     = ""
 $Piyush     = ""
 $Moiz       = ""
@@ -15,11 +26,11 @@ $Simranjeet = ""
 
 function New-GhIssue {
   param([string]$Title, [string]$Body, [string]$Assignee)
-  $args = @("issue", "create", "-R", $Repo, "--title", $Title, "--body", $Body)
+  $ghArgs = @("issue", "create", "-R", $Repo, "--title", $Title, "--body", $Body)
   if ($Assignee -and $Assignee.Trim().Length -gt 0) {
-    $args += @("--assignee", $Assignee)
+    $ghArgs += @("--assignee", $Assignee)
   }
-  & gh @args
+  & $GhExe @ghArgs
 }
 
 # --- Muskan: UI ---
