@@ -14,36 +14,39 @@ Simranjeet Singh Somal
 
 ---
 
-## 1. System Overview
+## 1. System overview
 
-The system is a **secure enterprise web application**. The **client** is a **React (Vite)** single-page application. The **server** is a **Node.js + Express** application exposing a **REST API** with data persisted in **MongoDB** using **Mongoose**. Authentication uses **JWT**; passwords are stored using **bcrypt** hashes.
+The system is a **secure enterprise web application**. The **client** is a **React (Vite)** single-page application. The **primary server** for assessment is **Django** exposing a **JSON REST API** with data persisted in **SQLite** via the **Django ORM**. Authentication uses **JWT**; passwords are stored using **bcrypt** hashes on the custom user model.
 
----
-
-## 2. System Architecture
-
-The API follows a **layered** structure:
-
-- **Routes:** Define HTTP paths and attach middleware (e.g. `authenticate`, `allowRoles`, validation chains).  
-- **Controllers:** Implement use cases (e.g. list/create/update transactions).  
-- **Middleware:** JWT verification, role checks, **express-validator**, error handling, **Helmet**, **rate limiting**, **mongo sanitization**, body size limits.  
-- **Models:** **Mongoose** schemas for **User**, **Transaction**, and **Note** (and related fields as implemented).
-
-The **client** handles **routing**, **protected routes** (JWT present), and **role routes** (redirect if role not allowed). This separation supports **maintainability** and **clear responsibility** per layer.
+An **optional** **Node.js + Express + MongoDB** stack exists under `backend/` with parallel route shapes; **submission and demo** follow **Django** as described in `HOW_TO_START_NEBULAX.md`.
 
 ---
 
-## 3. Authentication Design
+## 2. System architecture (Django assessment path)
+
+The Django app follows a **layered** structure:
+
+- **URLconf** (`finance_api/urls.py`): maps paths under `/api/...` to view functions.  
+- **Views** (`core/views.py`): implement JSON request/response handling, **JWT** verification decorators, **role checks**, and business rules for users, transactions, and notes.  
+- **JWT helpers** (`core/jwt_utils.py`): sign and verify tokens compatible with the React client (`sub`, `role`, `iat`, `exp`).  
+- **Models** (`core/models.py`): **Django ORM** models for **User**, **Transaction**, and **Note**; migrations under `core/migrations/`.  
+- **Middleware:** `SecurityMiddleware`, sessions (where used), **CORS** middleware for the Vite dev server.
+
+The **client** handles **routing**, **protected routes** (JWT present), and **role routes** (UI hides disallowed navigation; server still enforces). This separation supports **maintainability** and **clear responsibility** per layer.
+
+---
+
+## 3. Authentication design
 
 - Endpoints: **`POST /api/auth/signup`**, **`POST /api/auth/login`**.  
 - Successful login returns a **JWT** and a **user profile** (including **role**).  
 - The client stores the token and sends **`Authorization: Bearer <token>`** on subsequent requests.  
-- The server verifies the JWT **signature** and **expiry** and loads the current user where required.  
-- Passwords are verified with **bcrypt.compare** against stored hashes; hashes are not returned to clients.
+- The server verifies the JWT **signature** and **expiry** in view decorators and loads the current user where required.  
+- Passwords are verified with **bcrypt** against stored hashes; hashes are not returned to clients.
 
 ---
 
-## 4. Authorisation Design
+## 4. Authorisation design
 
 **Role-based access control (RBAC)** is applied after authentication.
 
@@ -53,11 +56,13 @@ The **client** handles **routing**, **protected routes** (JWT present), and **ro
 | **ACCOUNTANT** | Create/update transactions; credit/debit notes; no user-administration routes; delete only as allowed by API (typically admin-only). |
 | **USER** | List **own** transactions; **create** rows attributed to self; **update** **own** rows; no delete; no notes; no user admin. |
 
-Enforcement is **server-side** on each protected route (middleware and/or controller checks), not only in the UI.
+Enforcement is **server-side** in view logic (JWT + role + ownership checks), not only in the UI.
 
 ---
 
-## 5. URL Design
+## 5. URL design (Django implementation)
+
+Paths match `django_backend/finance_api/urls.py`. Transaction detail uses a **numeric primary key** in the URL.
 
 **Authentication**  
 - `POST /api/auth/signup` — register (default **USER** where applicable).  
@@ -70,8 +75,8 @@ Enforcement is **server-side** on each protected route (middleware and/or contro
 **Transactions**  
 - `GET /api/transactions` — list (**USER**: own rows; staff: broader visibility per implementation).  
 - `POST /api/transactions` — create (**ADMIN**, **ACCOUNTANT**, **USER**).  
-- `PUT /api/transactions/:id` — update (**ADMIN**, **ACCOUNTANT**; **USER** only for **own** transaction).  
-- `DELETE /api/transactions/:id` — delete (**ADMIN** only).
+- `PUT /api/transactions/<id>` — update (**ADMIN**, **ACCOUNTANT**; **USER** only for **own** transaction). Here `<id>` is the **integer primary key** of the transaction row.  
+- `DELETE /api/transactions/<id>` — delete (**ADMIN** only).
 
 **Notes**  
 - `POST /api/notes/credit` — credit note (**ADMIN**, **ACCOUNTANT**).  
@@ -84,39 +89,40 @@ Enforcement is **server-side** on each protected route (middleware and/or contro
 
 ---
 
-## 6. Data Design
+## 6. Data design (Django ORM / SQLite)
 
 **User**  
-- Identifiers, **email** (unique), **password hash**, **role**, timestamps as in schema.
+- **Email** (unique), **password hash**, **role**, `is_active`, timestamps — `AUTH_USER_MODEL = core.User`.
 
 **Transaction**  
-- **Amount** (positive), **type** (credit | debit), **description**, **date/time**, reference to **creating user**, timestamps.
+- **Amount**, **type** (credit | debit), **description**, **date/time**, **foreign key** to user, timestamps.
 
 **Note**  
-- Credit/debit note records with **amount**, **description**, **references**, and **timestamps** as defined in the implementation.
+- Credit/debit note records with **amount**, **description**, **references**, **note type**, user link, and timestamps as defined in the implementation.
 
 ---
 
-## 7. Validation Design
+## 7. Validation design
 
-**express-validator** (and related checks) enforces, among others:
+Validation is **server-side** in Django views:
 
-- Required fields for signup, login, and transaction operations.  
-- Valid **email** format and **password** minimum length.  
-- **Transaction amount** strictly greater than zero; **type** in allowed enumerations.  
-- Valid **MongoDB identifier** format for path parameters where applicable.  
-- Failures return **4xx** responses with structured error information suitable for the client.
+- JSON bodies are parsed explicitly; malformed JSON yields **4xx** responses.  
+- **Signup / login:** email shape, password minimum length, duplicate email handling.  
+- **Transactions:** required fields, positive amounts, allowed **type** enumerations, date handling, and **ownership** checks when **USER** updates a row.  
+- **Path parameters:** transaction **id** must exist and be accessible under RBAC rules.  
+- Failures return **4xx** with structured JSON suitable for the client.
+
+*(The optional Express stack uses **express-validator** and related middleware; behaviour is aligned at the API contract level.)*
 
 ---
 
-## 8. Security Considerations
+## 8. Security considerations
 
 - **JWT** verification on protected endpoints; rejection of expired or invalid tokens.  
 - **bcrypt** for password storage.  
-- **RBAC** via middleware (e.g. `allowRoles`) and ownership checks where **USER** may only modify own resources.  
-- **Input validation** and **NoSQL sanitization** to reduce injection-style attacks.  
-- **Helmet** (or equivalent) for security-related HTTP headers on Express.  
-- **Rate limiting**, especially on **auth** routes.  
-- **JSON body size limits** to reduce abuse.  
-- **Generic** login failure messages where implemented to limit **account enumeration**.  
-- Secrets and connection strings loaded from **environment variables** (`.env` not committed); **`.env.example`** lists required variables only.
+- **RBAC** and **ownership** checks in view code for **USER**-scoped updates.  
+- **Input validation** on write operations.  
+- **CORS** allow-list for development UIs in Django settings.  
+- **Django** `SecurityMiddleware` for baseline HTTP hardening.  
+- Secrets loaded from **environment variables** (shared `.env` pattern documented for local runs); **`.env`** not committed.  
+- **Generic** login failure messages where implemented to limit **account enumeration**.

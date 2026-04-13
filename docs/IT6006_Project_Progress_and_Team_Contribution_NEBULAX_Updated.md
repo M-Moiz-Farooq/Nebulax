@@ -27,7 +27,7 @@ The following **additional** milestones have been achieved (building on work alr
 | **Visual & UX** | Cohesive **UI system** (layout, navigation, tables, forms, modals), **role-aware** screens for Admin / Accountant / User, and polish for **demo and screenshots**. |
 | **API completeness** | Endpoints aligned with the system design: **auth**, **users**, **transactions** (CRUD rules per role), **notes** (credit/debit). **Health check** endpoint for monitoring. |
 | **RBAC (refined)** | Rules implemented **end-to-end**: e.g. users with **USER** role can **add** their own transactions; **edit/delete** rules follow staff/admin policies as designed. |
-| **Data layer** | Application supports **persistent storage** (team workflow: Node/MongoDB and/or **Django/SQLite** path for local demo stability). |
+| **Data layer** | Application supports **persistent storage**; **Django + SQLite** is the **primary assessment** path; optional **Node/MongoDB** API remains in-repo for the same contract. |
 | **Security (maintained)** | **JWT** sessions, **bcrypt** password storage, **server-side validation**, rate limiting and security-related middleware on the API, **CORS** configuration for development. |
 | **Documentation ↔ product** | In-app content and behaviour cross-checked against **functional and non-functional** requirements (auth, RBAC, transactions, notes, admin user management). |
 

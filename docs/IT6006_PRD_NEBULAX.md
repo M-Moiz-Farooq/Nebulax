@@ -16,7 +16,9 @@ Simranjeet Singh Somal
 
 ## 1. Project Overview
 
-This project designs and implements a **secure enterprise web application** for managing **financial transactions** (credit and debit ledger entries). The solution consists of a **React (Vite)** single-page client and a **Node.js + Express** REST API backed by **MongoDB** (via **Mongoose**). Security is enforced using **JWT authentication**, **bcrypt** password hashing, **role-based access control (RBAC)**, **server-side validation** (e.g. **express-validator**), and supporting middleware (e.g. security headers, rate limiting, and NoSQL injection mitigations on the API).
+This project designs and implements a **secure enterprise web application** for managing **financial transactions** (credit and debit ledger entries). The **assessment and demonstration** implementation consists of a **React (Vite)** single-page client and a **Django** service exposing the same **JSON REST** contract under `/api/...`, with data persisted in **SQLite** for local development and marking. Security is enforced using **JWT authentication**, **bcrypt** password hashing, **role-based access control (RBAC)**, **server-side validation** on each write operation, **CORS** restrictions for the dev UI, and secrets loaded from environment variables.
+
+The repository also contains an **optional** **Node.js + Express + MongoDB** API under `backend/` that implements **equivalent route shapes** for team flexibility; **course submission and lecturer review** use the **Django + SQLite** path documented in `HOW_TO_START_NEBULAX.md`.
 
 ---
 
@@ -28,7 +30,7 @@ Small and medium-sized organisations often depend on **manual processes** or **i
 
 ## 3. Solution Statement
 
-The proposed solution is a **web-based finance management system**. Users interact through a **browser UI**; the server exposes a **JSON REST API** protected by **JWT**. **RBAC** defines what **Administrators**, **Accountants**, and **standard Users** may do. **Server-side validation** ensures only acceptable data is stored. The implementation stack is **Node.js**, **Express**, and **MongoDB**, aligned with the module’s enterprise web development scenario.
+The proposed solution is a **web-based finance management system**. Users interact through a **browser UI**; the **primary** server exposes a **JSON REST API** (Django) protected by **JWT**. **RBAC** defines what **Administrators**, **Accountants**, and **standard Users** may do. **Server-side validation** ensures only acceptable data is stored. For IT6006 submission, the implementation stack is **React (Vite)**, **Django**, and **SQLite**, aligned with the module’s enterprise web development scenario.
 
 ---
 
@@ -60,11 +62,11 @@ The proposed solution is a **web-based finance management system**. Users intera
 
 ## 6. Non-Functional Requirements
 
-- **Security:** Passwords stored with **bcrypt**; JWT configuration; RBAC; server-side validation; sanitisation and rate limiting where implemented; security-related HTTP headers (e.g. via Helmet on Express).  
+- **Security:** Passwords stored with **bcrypt**; JWT configuration; RBAC; server-side validation; **Django** `SecurityMiddleware`; **CORS** allow-list for the Vite dev origin; secrets via environment variables.  
 - **Performance:** API responses suitable for interactive use (e.g. typical calls completing within **~2 seconds** under normal development conditions).  
-- **Maintainability:** Layered API structure (routes → controllers → middleware → models).  
+- **Maintainability:** Layered Django structure (**URLconf** → view functions → ORM models → JWT helpers).  
 - **Reliability:** Invalid input rejected consistently; health endpoint for basic monitoring.  
-- **Operational hygiene:** Secrets supplied via **environment variables**; `.env.example` documents required variables without real secrets.
+- **Operational hygiene:** Secrets supplied via **environment variables**; `.env.example` / documented variables without real secrets; SQLite database file for local runs (not committed with production data).
 
 ---
 
@@ -80,13 +82,36 @@ The proposed solution is a **web-based finance management system**. Users intera
 
 ---
 
-## 8. Privacy and Security Policies
+## 8. Privacy and security policies
+
+### 8.1 Scope and data we handle
+
+NEBULAX processes **personal and financial data** needed to run the application:
+
+- **Identity:** email address (login identifier), password **never** stored in plain text.  
+- **Role:** ADMIN / ACCOUNTANT / USER — determines authorised actions.  
+- **Financial records:** transaction and note content entered by users (amounts, descriptions, dates, references) and links to the creating user for accountability.
+
+Data is processed **only** for the purposes of **authentication**, **authorisation**, **ledger operations**, and **audit-style traceability** described in the functional requirements.
+
+### 8.2 Access control and roles
+
+Access follows **least privilege**: standard users see and change only what their role allows; staff and admin features are **blocked server-side** if the JWT role does not permit the operation. The UI may hide controls, but **enforcement** is on the API.
+
+### 8.3 Retention and storage
+
+For the **submitted coursework** build, data is stored in a **local SQLite** file during development. The team treats this as **development data**, not a production retention policy. In a real deployment, retention periods, backups, and deletion procedures would be defined by the organisation; the design supports **identifiable rows** and **timestamps** for future policy.
+
+### 8.4 Security measures (technical)
 
 - Passwords are **never** stored in plain text; **bcrypt** hashing is used.  
 - **JWT** is used for authenticated API access; token lifetime is **configurable**; tokens are **validated** on protected operations.  
 - **RBAC** restricts features by role (e.g. user administration and notes limited to appropriate roles).  
 - **Server-side validation** ensures amounts, types, emails, and other inputs meet rules before persistence.  
-- **Sanitisation** and **rate limiting** (including on authentication routes) reduce common abuse patterns.  
-- **Security-related HTTP headers** are applied on the Express API where configured.  
-- Sensitive configuration (**JWT secret**, database connection strings) is kept in **environment variables**, not committed to source control.  
+- **CORS** is restricted to known dev UI origins in settings.  
+- Sensitive configuration (**JWT secret**, database path, Django secret) is kept in **environment variables**, not committed to source control.  
 - API responses do not expose **password hashes**; error messages avoid unnecessary **internal detail** suitable for client exposure.
+
+### 8.5 Optional stack (repository only)
+
+The optional **Express + MongoDB** implementation follows the same **security intent** (JWT, bcrypt, RBAC, validation) but uses different middleware names; it is **not** the primary submission path unless explicitly agreed with the lecturer.
