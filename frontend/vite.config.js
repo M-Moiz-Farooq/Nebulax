@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      // Dev: browser calls /api → Express (default PORT 5000). For Django instead, use 8000.
-      '/api': { target: 'http://localhost:5000', changeOrigin: true },
+      // Assessment: Django on 8000. For Express+Mongo instead, use http://localhost:5000.
+      '/api': { target: 'http://localhost:8000', changeOrigin: true },
     },
   },
 });
