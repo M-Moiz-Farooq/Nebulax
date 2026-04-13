@@ -20,6 +20,8 @@ python -m venv .venv
 .\.venv\Scripts\python manage.py runserver 8000
 ```
 
+On **macOS or Linux**, activate the venv with `source .venv/bin/activate`, then run `pip` / `python` commands without the `.\.venv\Scripts\` prefix.
+
 The API listens on **http://127.0.0.1:8000**. The Vite dev server is set to **proxy `/api` → port 8000** (see `frontend/vite.config.js`).
 
 Adjust `seed_admin` / environment if your project documents custom admin credentials.
