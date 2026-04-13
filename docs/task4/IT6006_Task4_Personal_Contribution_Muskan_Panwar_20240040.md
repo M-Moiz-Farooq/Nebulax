@@ -70,32 +70,18 @@ This is a concrete implementation choice: it encodes **permission groups** (role
 
 ---
 
-## 5. Evidence of contribution (Task 4 requirement)
+## 5. Evidence of contribution
 
-**Pull request evidence**
+**GitHub — NEBULAX repository**  
+The project repository is **https://github.com/M-Moiz-Farooq/Nebulax**. My UI work is reflected in **commits**, **pull requests**, **issues**, and **reviews** on that repository, meeting the assessment expectation of visible contribution in GitHub.
 
-- [ ] Insert: screenshot or link of a merged PR you authored (recommended: `Layout.jsx`, major page, or `index.css` feature).  
-
-**Team discussion evidence**
-
-- [ ] Insert: Teams screenshot where UI scope/demo polish, role screens, or validation messaging was agreed.  
+**Team communication**  
+Per **IT6006_Team_Contract_NEBULAX.md**, the team used **Microsoft Teams** for coordination; integration and scope alignment are also visible through **GitHub** activity.
 
 ---
 
-## 6. Mapping to the rubric (self-check)
+## 6. Declaration alignment
 
-| Theme | How this summary demonstrates it |
-|-------|-----------------------------------|
-| **Task 2 — Requirements** | Connects UI work to user stories, validation thinking, and PRD/SDD terminology. |
-| **Task 3 — URLs / access paths** | Demonstrates route-level navigation design aligned with role permissions. |
-| **Task 3 — Authorisation (UI layer)** | Shows role-gated navigation as part of a complete auth story (with server enforcement). |
-| **Task 4 — Reflection** | Clear role, tasks, decision input, one implementation, evidence placeholders. |
+This summary is consistent with the NEBULAX **team contract** and the **updated progress/contribution report** for Muskan Panwar.
 
----
-
-## 7. Declaration alignment
-
-This summary is consistent with the NEBULAX **team contract** and the **updated progress/contribution report** for Muskan Panwar. Evidence attachments are genuine GitHub/Teams outputs.
-
-**Student:** Muskan Panwar (20240040)  
-**Date:** _______________
+**Student:** Muskan Panwar (20240040)

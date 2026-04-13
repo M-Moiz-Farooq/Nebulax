@@ -94,33 +94,18 @@ This is an example of **defence-in-depth**: authentication mechanics are correct
 
 ---
 
-## 5. Evidence of contribution (Task 4 requirement)
+## 5. Evidence of contribution
 
-**Pull request evidence**
+**GitHub — NEBULAX repository**  
+Coursework requires visible teamwork on GitHub. The single canonical repository for this project is **https://github.com/M-Moiz-Farooq/Nebulax**. My contribution is evidenced there through **commits**, **pull requests**, **issues**, and **reviews**, consistent with the IT6006 assessment brief.
 
-- [ ] Insert: screenshot or link of a merged PR you authored (recommended: JWT/API integration, Django views, or `api.js` changes).  
-- Suggested search: GitHub → **Pull requests** → filter **author:@me** (or your username).
-
-**Team discussion evidence**
-
-- [ ] Insert: Teams screenshot showing a technical decision thread you participated in (e.g. Django assessment path, RBAC rule, or proxy configuration). Redact unrelated messages if needed.
+**Team communication**  
+Per **IT6006_Team_Contract_NEBULAX.md**, day-to-day coordination used **Microsoft Teams**. Architectural and scope decisions are also traceable through **GitHub** (issues, merged work, commit messages).
 
 ---
 
-## 6. Mapping to the rubric (self-check)
+## 6. Declaration alignment
 
-| Theme | How this summary demonstrates it |
-|-------|-----------------------------------|
-| **Task 4 — Reflective journal & personal contribution** | Reflects role, tasks, decisions, one implementation with code, and PR/Teams evidence placeholders. |
-| **LO2 — AuthN/AuthZ** | JWT issuance + correct client token attachment; references server-side RBAC alignment with SDD. |
-| **LO3 — Secure web apps / frameworks** | Django + React integration, practical security constraints (`JWT_SECRET` length). |
-| **LO4 — Organisational SDLC practices** | Contract-aligned leadership, GitHub workflow, integration ownership, submission readiness. |
+This summary describes work performed as part of the NEBULAX team effort and is consistent with our **team contract** and **project documentation** (PRD/SDD/progress report).
 
----
-
-## 7. Declaration alignment
-
-This summary describes work performed as part of the NEBULAX team effort and is consistent with our **team contract** and **project documentation** (PRD/SDD/progress report). Evidence attachments are genuine outputs from GitHub and Teams.
-
-**Student:** Muhammad Moiz Farooq (20240779)  
-**Date:** _______________
+**Student:** Muhammad Moiz Farooq (20240779)

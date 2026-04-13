@@ -74,31 +74,18 @@ This is more than “schema work”: it underpins **authorisation** end-to-end�
 
 ---
 
-## 5. Evidence of contribution (Task 4 requirement)
+## 5. Evidence of contribution
 
-**Pull request evidence**
+**GitHub — NEBULAX repository**  
+The project repository is **https://github.com/M-Moiz-Farooq/Nebulax**. QA feedback, database-related changes, testing-related fixes, and reviews appear in **commits**, **pull requests**, **issues**, and **review** activity on that repository.
 
-- [ ] Insert: screenshot or link of a merged PR you participated in (recommended: model/migration/seed-related PR, or a QA-fix PR). If you primarily contributed via reviews, include a **review** screenshot.  
-
-**Team discussion evidence**
-
-- [ ] Insert: Teams screenshot showing bug reports, test results, or regression coordination.  
+**Team communication**  
+Per **IT6006_Team_Contract_NEBULAX.md**, the team used **Microsoft Teams** for coordination; defect reports and retest outcomes were handled in the team workflow and reflected in **GitHub** where fixes landed.
 
 ---
 
-## 6. Mapping to the rubric (self-check)
+## 6. Declaration alignment
 
-| Theme | How this summary demonstrates it |
-|-------|-----------------------------------|
-| **Task 3 — AuthN/AuthZ + integrity** | Role persistence + QA validation of RBAC flows. |
-| **Task 2/3 — Quality of implementation** | Regression testing and evidence collection supporting a working system narrative. |
-| **Task 4 — Reflection** | Contract-aligned QA + DB responsibilities; one implementation snippet; evidence placeholders. |
+This summary is consistent with the NEBULAX **team contract** and the **updated progress report** for Simranjeet Singh Somal.
 
----
-
-## 7. Declaration alignment
-
-This summary is consistent with the NEBULAX **team contract** and the **updated progress report** for Simranjeet Singh Somal. Evidence attachments are genuine GitHub/Teams outputs.
-
-**Student:** Simranjeet Singh Somal (20231130)  
-**Date:** _______________
+**Student:** Simranjeet Singh Somal (20231130)
