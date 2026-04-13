@@ -5,6 +5,7 @@ import { useToast } from './ToastContext';
 
 const AuthContext = createContext(null);
 
+/** Syncs JWT + user profile with `localStorage` and exposes login/logout for the tree. */
 export function AuthProvider({ children }) {
   const navigate = useNavigate();
   const { toast } = useToast();
