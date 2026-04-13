@@ -128,7 +128,14 @@ def require_roles(*allowed):
 def health(request):
     if request.method != "GET":
         return JsonResponse({"success": False, "message": "Method not allowed"}, status=405)
-    return JsonResponse({"success": True, "message": "ok", "timestamp": timezone.now().isoformat()})
+    return JsonResponse(
+        {
+            "success": True,
+            "message": "ok",
+            "service": "nebulax-django-api",
+            "timestamp": timezone.now().isoformat(),
+        }
+    )
 
 
 def _validate_signup_password(pw):
