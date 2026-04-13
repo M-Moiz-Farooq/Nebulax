@@ -27,6 +27,11 @@ function notifySessionExpired() {
   onUnauthorized?.();
 }
 
+/**
+ * JSON `fetch` helper for `/api/...`. Sends `Authorization: Bearer` except on login/signup paths.
+ * @param {string} path - Absolute path beginning with `/api`
+ * @param {RequestInit & { body?: object }} [options] - `body` is JSON-serialised when present
+ */
 export async function api(path, options = {}) {
   const headers = {
     'Content-Type': 'application/json',
