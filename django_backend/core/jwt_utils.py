@@ -1,4 +1,7 @@
-"""JWT compatible with the former Node jsonwebtoken payloads: { sub, role, exp, iat }."""
+"""JWT helpers for Django — same payload shape as the legacy Node API: { sub, role, exp, iat }.
+
+Uses ``JWT_SECRET`` and ``JWT_EXPIRES_IN`` from Django settings (see ``finance_api.settings``).
+"""
 import os
 from datetime import datetime, timedelta, timezone
 
