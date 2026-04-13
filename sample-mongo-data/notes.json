@@ -1,0 +1,26 @@
+[
+  {
+    "_id": { "$oid": "674a000101234567890ccc01" },
+    "noteType": "credit_note",
+    "amount": 50,
+    "description": "Sample credit note — adjustment (demo)",
+    "date": { "$date": "2025-04-05T08:00:00.000Z" },
+    "reference": "CN-DEMO-001",
+    "user": { "$oid": "674a000101234567890aaa02" },
+    "createdAt": { "$date": "2025-04-05T08:00:00.000Z" },
+    "updatedAt": { "$date": "2025-04-05T08:00:00.000Z" },
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "674a000101234567890ccc02" },
+    "noteType": "debit_note",
+    "amount": 25.5,
+    "description": "Sample debit note — fee correction (demo)",
+    "date": { "$date": "2025-04-05T09:00:00.000Z" },
+    "reference": "DN-DEMO-001",
+    "user": { "$oid": "674a000101234567890aaa02" },
+    "createdAt": { "$date": "2025-04-05T09:00:00.000Z" },
+    "updatedAt": { "$date": "2025-04-05T09:00:00.000Z" },
+    "__v": 0
+  }
+]

@@ -1,0 +1,52 @@
+IT6006 — sample MongoDB data for Atlas (or any MongoDB)
+=======================================================
+
+What’s in this folder
+-----------------------
+  users.json        — 3 users (ADMIN, ACCOUNTANT, USER)
+  transactions.json — 3 sample ledger rows
+  notes.json        — 2 sample credit/debit notes
+
+All three accounts use the SAME password:  12345678
+
+  admin@school.demo       → ADMIN
+  accountant@school.demo  → ACCOUNTANT
+  student@school.demo     → USER
+
+Import order: users → transactions → notes (foreign keys point to user _id).
+
+Option A — mongoimport (recommended)
+--------------------------------------
+1) Install "MongoDB Database Tools" if you don’t have mongoimport:
+   https://www.mongodb.com/try/download/database-tools
+
+2) Open PowerShell and run (replace YOUR_URI with your Atlas connection string;
+   the database name should be it6006_finance to match the app):
+
+   cd "path\to\IT6006\sample-mongo-data"
+
+   mongoimport --uri="YOUR_URI" --db=it6006_finance --collection=users --jsonArray --file=users.json
+
+   mongoimport --uri="YOUR_URI" --db=it6006_finance --collection=transactions --jsonArray --file=transactions.json
+
+   mongoimport --uri="YOUR_URI" --db=it6006_finance --collection=notes --jsonArray --file=notes.json
+
+Use the same URI you put in backend\.env as MONGODB_URI (with password filled in).
+
+If collections already have data, either drop them in Atlas first or use --drop on mongoimport to replace.
+
+Option B — MongoDB Compass
+--------------------------
+1) Connect to your cluster with Compass.
+2) Select database it6006_finance (create it if needed).
+3) Create collection users → Add Data → Import JSON file → users.json
+4) Repeat for collections transactions and notes with the matching files.
+
+Option C — Atlas web UI (manual)
+--------------------------------
+Atlas “Insert Document” is tedious for many rows; prefer Option A or B.
+
+After import
+------------
+Point backend\.env MONGODB_URI at this cluster/database, run the API, log in at
+http://localhost:5173 with one of the emails above and password 12345678.

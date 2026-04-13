@@ -1,0 +1,11 @@
+{
+  "name": "it6006-finance-workspace",
+  "private": true,
+  "description": "Run API from repo root: npm start",
+  "scripts": {
+    "start": "npm start --prefix backend",
+    "dev": "npm run dev --prefix backend",
+    "ui": "npm run dev --prefix frontend",
+    "verify-db": "npm run verify-db --prefix backend"
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "_id": { "$oid": "674a000101234567890aaa01" },
+    "email": "admin@school.demo",
+    "password": "$2b$12$xFcTuOVfIy6VM3jQOa10RuaKdtrOhRhFLqoLyFaBJpRIsA.ngPLUe",
+    "role": "ADMIN",
+    "createdAt": { "$date": "2025-04-01T10:00:00.000Z" },
+    "updatedAt": { "$date": "2025-04-01T10:00:00.000Z" },
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "674a000101234567890aaa02" },
+    "email": "accountant@school.demo",
+    "password": "$2b$12$xFcTuOVfIy6VM3jQOa10RuaKdtrOhRhFLqoLyFaBJpRIsA.ngPLUe",
+    "role": "ACCOUNTANT",
+    "createdAt": { "$date": "2025-04-01T10:00:00.000Z" },
+    "updatedAt": { "$date": "2025-04-01T10:00:00.000Z" },
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "674a000101234567890aaa03" },
+    "email": "student@school.demo",
+    "password": "$2b$12$xFcTuOVfIy6VM3jQOa10RuaKdtrOhRhFLqoLyFaBJpRIsA.ngPLUe",
+    "role": "USER",
+    "createdAt": { "$date": "2025-04-01T10:00:00.000Z" },
+    "updatedAt": { "$date": "2025-04-01T10:00:00.000Z" },
+    "__v": 0
+  }
+]

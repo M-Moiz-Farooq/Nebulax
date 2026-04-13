@@ -1,0 +1,5 @@
+# IT6006 — Django API (SQLite; replaces Node + MongoDB stack)
+Django>=5.0,<6
+django-cors-headers>=4.3
+PyJWT>=2.8
+python-dotenv>=1.0

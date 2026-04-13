@@ -1,0 +1,35 @@
+[
+  {
+    "_id": { "$oid": "674a000101234567890bbb01" },
+    "amount": 1500.5,
+    "type": "credit",
+    "description": "Sample credit — client payment (demo)",
+    "date": { "$date": "2025-04-02T09:30:00.000Z" },
+    "user": { "$oid": "674a000101234567890aaa02" },
+    "createdAt": { "$date": "2025-04-02T09:30:00.000Z" },
+    "updatedAt": { "$date": "2025-04-02T09:30:00.000Z" },
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "674a000101234567890bbb02" },
+    "amount": 320.75,
+    "type": "debit",
+    "description": "Sample debit — office supplies (demo)",
+    "date": { "$date": "2025-04-03T14:15:00.000Z" },
+    "user": { "$oid": "674a000101234567890aaa02" },
+    "createdAt": { "$date": "2025-04-03T14:15:00.000Z" },
+    "updatedAt": { "$date": "2025-04-03T14:15:00.000Z" },
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "674a000101234567890bbb03" },
+    "amount": 99.99,
+    "type": "credit",
+    "description": "Sample entry by student user (demo)",
+    "date": { "$date": "2025-04-04T11:00:00.000Z" },
+    "user": { "$oid": "674a000101234567890aaa03" },
+    "createdAt": { "$date": "2025-04-04T11:00:00.000Z" },
+    "updatedAt": { "$date": "2025-04-04T11:00:00.000Z" },
+    "__v": 0
+  }
+]
