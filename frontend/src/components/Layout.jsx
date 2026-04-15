@@ -2,7 +2,6 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import ApiHealthPill from './ApiHealthPill';
-import MainParallax from './MainParallax';
 import { TEAM } from '../content/nebulaxProject';
 
 const pageIntro = {
@@ -96,10 +95,6 @@ export default function Layout() {
 
   return (
     <div className="app-shell">
-      <div className="bg-grid" aria-hidden />
-      <div className="bg-glow bg-glow-1" aria-hidden />
-      <div className="bg-glow bg-glow-2" aria-hidden />
-
       <aside className="sidebar glass-sidebar">
         <div className="sidebar-top">
           <div className="brand">
@@ -147,7 +142,6 @@ export default function Layout() {
       </aside>
 
       <main className="main-area">
-        <MainParallax />
         <motion.header
           className="top-bar"
           key={`hdr-${loc.pathname}`}

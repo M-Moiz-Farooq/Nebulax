@@ -46,10 +46,6 @@ export default function LoginPage() {
 
   return (
     <div className="auth-page">
-      <div className="bg-grid" aria-hidden />
-      <div className="bg-glow bg-glow-1" />
-      <div className="bg-glow bg-glow-2" />
-
       <motion.div
         className="auth-card auth-card-wide glass-auth"
         initial={{ opacity: 0, y: 36, scale: 0.96 }}
