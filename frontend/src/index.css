@@ -1,7 +1,7 @@
 :root {
-  --bg-deep: #06060a;
-  --bg-panel: rgba(18, 18, 28, 0.72);
-  --bg-panel-solid: #12121c;
+  --bg-deep: #0a1628;
+  --bg-panel: rgba(14, 26, 44, 0.78);
+  --bg-panel-solid: #121f35;
   --border: rgba(255, 255, 255, 0.08);
   --text: #e8e8ef;
   --muted: rgba(232, 232, 239, 0.55);
@@ -70,54 +70,6 @@ code {
   font-size: 0.92em;
 }
 
-/* Ambient background */
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 75%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bg-glow {
-  position: fixed;
-  width: 560px;
-  height: 560px;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 0;
-  animation: float 18s ease-in-out infinite;
-}
-
-.bg-glow-1 {
-  top: -120px;
-  right: -80px;
-  background: radial-gradient(circle, var(--accent-a), transparent 70%);
-}
-
-.bg-glow-2 {
-  bottom: -180px;
-  left: -100px;
-  background: radial-gradient(circle, var(--accent-b), transparent 70%);
-  animation-delay: -6s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-24px, 20px) scale(1.05);
-  }
-}
-
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -181,7 +133,7 @@ code {
   width: 268px;
   padding: 1.75rem 1.25rem;
   border-right: 1px solid var(--border);
-  background: linear-gradient(165deg, rgba(20, 20, 32, 0.95) 0%, rgba(10, 10, 18, 0.98) 100%);
+  background: linear-gradient(165deg, rgba(14, 26, 44, 0.96) 0%, rgba(8, 16, 30, 0.98) 100%);
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
@@ -1788,8 +1740,8 @@ code {
 .glass-sidebar {
   background: linear-gradient(
     165deg,
-    rgba(24, 26, 44, 0.52) 0%,
-    rgba(12, 14, 26, 0.68) 100%
+    rgba(16, 28, 48, 0.55) 0%,
+    rgba(10, 18, 34, 0.72) 100%
   ) !important;
   border-right-color: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(32px) saturate(185%);
@@ -1814,42 +1766,6 @@ code {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.main-parallax {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.main-parallax__shard {
-  position: absolute;
-  border-radius: 28px;
-  opacity: 0.45;
-  filter: blur(1px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.main-parallax__shard--a {
-  width: min(420px, 55vw);
-  height: 200px;
-  top: 8%;
-  right: -4%;
-  background: linear-gradient(125deg, rgba(34, 211, 238, 0.2), rgba(167, 139, 250, 0.08));
-  transform: rotate(-8deg);
-}
-
-.main-parallax__shard--b {
-  width: min(360px, 48vw);
-  height: 160px;
-  bottom: 12%;
-  left: -6%;
-  background: linear-gradient(115deg, rgba(244, 114, 182, 0.12), rgba(34, 211, 238, 0.1));
-  transform: rotate(6deg);
 }
 
 .dash-split__cell {
@@ -1878,13 +1794,7 @@ code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bg-glow {
-    animation: none;
-  }
   .page-title {
     animation: none;
-  }
-  .main-parallax {
-    display: none;
   }
 }
