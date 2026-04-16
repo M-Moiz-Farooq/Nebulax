@@ -92,4 +92,4 @@ Use one row per week; paste **link to a PR** or **issue** you completed that wee
 
 ---
 
-*This timeline spans approximately **one month** before submission. Replace placeholder dates if your course calendar differs.*
+*This timeline spans approximately **one month** before submission. Confirm the week ranges match your course schedule if your trimester dates differ.*

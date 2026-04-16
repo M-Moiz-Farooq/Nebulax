@@ -172,4 +172,4 @@ Since the previous progress report, NEBULAX has advanced from a **strong backend
 
 ---
 
-*End of updated report. NEBULAX · IT6006 · Internal use — align dates and filenames with your institution’s submission portal.*
+*End of updated report. NEBULAX · IT6006 — follow your institution’s file-naming and submission-portal requirements.*
